@@ -75,7 +75,7 @@
     </style>
 
     <style name="labels" parent="@android:style/TextAppearance.Widget.TextView">
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">24dp</item>
@@ -92,7 +92,7 @@
     </style>
 
     <style name="textInput">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">4dp</item>
@@ -116,7 +116,7 @@
 
     <style name="radiobutton" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="android:gravity">center_vertical</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:elevation">1dp</item>
         <item name="android:radius">2dp</item>
         <item name="android:drawablePadding">8dp</item>
@@ -136,7 +136,7 @@
         <item name="android:paddingBottom">8dp</item>
         <item name="android:minHeight">52dp</item>
         <item name="android:clickable">true</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:background">@drawable/options_separator</item>
     </style>
 
@@ -275,7 +275,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
     </style>
-
+    -
     <style name="info">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

@@ -73,42 +73,42 @@
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.sections.SectionBActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.sections.SectionCActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.sections.SectionD1Activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.sections.SectionD2Activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.sections.SectionEActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.sections.SectionFActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.sections.CaptureImageActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.ui.other.EndingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeUrdu" />
+            android:theme="@style/AppThemeEnglish" />
 
         <activity
             android:name="edu.aku.hassannaqvi.ses.core.AndroidDatabaseManager"
