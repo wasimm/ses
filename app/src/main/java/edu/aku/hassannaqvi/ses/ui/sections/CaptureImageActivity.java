@@ -37,7 +37,7 @@ public class CaptureImageActivity extends AppCompatActivity {
         setupSkip();
         PhotoSerial = 1;
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         skip_flag = intent.getStringExtra("skip_flag");
         if (skip_flag == "FB") {
             SectionCActivity C = new SectionCActivity();
@@ -51,7 +51,7 @@ public class CaptureImageActivity extends AppCompatActivity {
             E.BtnContinue();
             F.BtnContinue();
             finish();
-        }
+        }*/
     }
 
 
@@ -85,6 +85,7 @@ public class CaptureImageActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
+
         if (PhotoSerial <= 1) {
             Toast.makeText(this, "Minimum 1 and maximum 4 picture(s) must be taken", Toast.LENGTH_LONG).show();
             return false;

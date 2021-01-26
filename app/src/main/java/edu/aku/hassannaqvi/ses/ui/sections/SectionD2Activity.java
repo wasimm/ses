@@ -305,6 +305,7 @@ public class SectionD2Activity extends AppCompatActivity {
     private boolean formValidation() {
 
         if (skip == true) {
+
             return Validator.emptyCheckingContainer(this, bi.GrpName);
         }
 

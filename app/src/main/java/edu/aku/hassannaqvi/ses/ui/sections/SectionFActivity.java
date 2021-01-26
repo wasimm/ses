@@ -9,6 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Validator;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -195,16 +197,7 @@ public class SectionFActivity extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        /*if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
-            return false;
-        }*/
-
-        /*if (PhotoSerial <= 1) {
-            Toast.makeText(this, "Minimum 1 and maximum 4 picture(s) must be taken", Toast.LENGTH_LONG).show();
-            return false;
-        }*/
-
-        return true;
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
 }
