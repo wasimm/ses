@@ -686,8 +686,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B1101"
                             app:mask="##"
-                            app:maxValue="20"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -703,8 +703,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B1102"
                             app:mask="##"
-                            app:maxValue="3"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -720,8 +720,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B1103"
                             app:mask="##"
-                            app:maxValue="2"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -737,8 +737,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B1104"
                             app:mask="##"
-                            app:maxValue="2"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -754,9 +754,10 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B1105"
                             app:mask="##"
-                            app:maxValue="2"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -796,8 +797,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B1201"
                             app:mask="##"
-                            app:maxValue="20"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -888,8 +889,8 @@
                             android:hint="@string/B14"
                             android:inputType="number"
                             app:mask="##"
-                            app:maxValue="20"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -1446,8 +1447,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2401"
                             app:mask="##"
-                            app:maxValue="500"
-                            app:minValue="1"
+                            app:maxValue="10000"
+                            app:minValue="5"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -1488,7 +1489,7 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2501"
                             app:mask="##"
-                            app:maxValue="500"
+                            app:maxValue="10000"
                             app:minValue="1"
                             app:type="range" />
                     </LinearLayout>
@@ -1580,7 +1581,7 @@
                             android:hint="@string/B2701"
                             app:mask="##"
                             app:maxValue="300"
-                            app:minValue="1"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -1627,8 +1628,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2801"
                             app:mask="##"
-                            app:maxValue="30"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -1644,8 +1645,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2802"
                             app:mask="##"
-                            app:maxValue="30"
-                            app:minValue="1"
+                            app:maxValue="99"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -1692,8 +1693,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2901"
                             app:mask="##"
-                            app:maxValue="5"
-                            app:minValue="1"
+                            app:maxValue="50"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -1709,8 +1710,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2902"
                             app:mask="##"
-                            app:maxValue="5"
-                            app:minValue="1"
+                            app:maxValue="50"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -1726,8 +1727,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2903"
                             app:mask="##"
-                            app:maxValue="3"
-                            app:minValue="1"
+                            app:maxValue="50"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -1743,8 +1744,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2904"
                             app:mask="##"
-                            app:maxValue="2"
-                            app:minValue="1"
+                            app:maxValue="50"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -1760,8 +1761,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2905"
                             app:mask="##"
-                            app:maxValue="5"
-                            app:minValue="1"
+                            app:maxValue="50"
+                            app:minValue="0"
                             app:type="range" />
 
                         <TextView
@@ -1777,8 +1778,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2906"
                             app:mask="##"
-                            app:maxValue="3"
-                            app:minValue="1"
+                            app:maxValue="50"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -2015,8 +2016,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B3401"
                             app:mask="##"
-                            app:maxValue="20"
-                            app:minValue="1"
+                            app:maxValue="25"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -2197,8 +2198,8 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B3801"
                             app:mask="##"
-                            app:maxValue="50"
-                            app:minValue="1"
+                            app:maxValue="300"
+                            app:minValue="0"
                             app:type="range" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

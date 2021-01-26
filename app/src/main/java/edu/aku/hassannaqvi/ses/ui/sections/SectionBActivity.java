@@ -18,7 +18,6 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import edu.aku.hassannaqvi.ses.R;
 import edu.aku.hassannaqvi.ses.contracts.FormsContract;
@@ -35,10 +34,8 @@ public class SectionBActivity extends AppCompatActivity {
 
     ActivitySectionBBinding bi;
     Intent oF = null;
-    private int PhotoSerial;
     String SectionBActivity;
     private DatabaseHelper db;
-    private List<String> somelist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +44,7 @@ public class SectionBActivity extends AppCompatActivity {
         bi.setCallback(this);
         setupSkip();
         populateSpinner(this);
-
-        PhotoSerial = 1;
     }
-
 
     private void setupSkip() {
 
@@ -167,13 +161,11 @@ public class SectionBActivity extends AppCompatActivity {
 
     }
 
-
     private void populateSpinner(final Context context) {
 
         db = MainApp.appInfo.getDbHelper();
 
     }
-
 
     public void BtnContinue() {
         if (!formValidation()) return;
@@ -213,7 +205,6 @@ public class SectionBActivity extends AppCompatActivity {
             return false;
         }
     }
-
 
     private void SaveDraft() throws JSONException {
 

@@ -46,7 +46,6 @@ public class SectionCActivity extends AppCompatActivity {
         PhotoSerial = 1;
     }
 
-
     private void setupSkip() {
 
         bi.C1.setOnCheckedChangeListener((radioGroup, i) -> {
@@ -83,13 +82,11 @@ public class SectionCActivity extends AppCompatActivity {
         });
     }
 
-
     private void populateSpinner(final Context context) {
 
         db = MainApp.appInfo.getDbHelper();
 
     }
-
 
     public void BtnContinue() {
         if (!formValidation()) return;
@@ -111,7 +108,6 @@ public class SectionCActivity extends AppCompatActivity {
         startActivity(oF);
     }
 
-
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SECTION_C, MainApp.form.getSection_C());
@@ -122,7 +118,6 @@ public class SectionCActivity extends AppCompatActivity {
             return false;
         }
     }
-
 
     private void SaveDraft() throws JSONException {
 
@@ -210,7 +205,6 @@ public class SectionCActivity extends AppCompatActivity {
         MainApp.setGPS(this, SectionCActivity);
         MainApp.form.setSection_C(String.valueOf(json));
     }
-
 
     private boolean formValidation() {
 
