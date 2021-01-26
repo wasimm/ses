@@ -10,6 +10,7 @@
     <color name="colorPrimaryLight_overlay">#7f529B42</color>
     <color name="colorAccent">#7AC043</color>
     <color name="colorAccent_overlay">#7f7AC043</color>
+    <color name="school_color">#16A085</color>
 
     <!-- Standard App Colors -->
     <color name="black">#000000</color>

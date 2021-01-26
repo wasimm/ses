@@ -28,7 +28,6 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.ses.contracts.UsersContract;
 import edu.aku.hassannaqvi.ses.location.LocationLiveData;
-import edu.aku.hassannaqvi.ses.models.Assessment;
 import edu.aku.hassannaqvi.ses.models.Form;
 import edu.aku.hassannaqvi.ses.ui.other.EndingActivity;
 import kotlin.Pair;
@@ -43,12 +42,12 @@ public class MainApp extends Application {
     public static final String TAG = "AppMain";
     //public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
     public static final String _IP = "http://f38158";// .TEST server
-    public static final String _HOST_URL = MainApp._IP + "/moringa/api/";// .TEST server;
+    public static final String _HOST_URL = MainApp._IP + "/ses/api/";// .TEST server;
     public static final String _SERVER_URL = "sync.php";
     public static final String _SERVER_GET_URL = "getData.php";
-    public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/moringa/api/uploads.php";
+    public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/ses/api/uploads.php";
 
-    public static final String _UPDATE_URL = MainApp._IP + "/moringa/app/";
+    public static final String _UPDATE_URL = MainApp._IP + "/ses/app/";
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
     // Location settings
@@ -82,7 +81,6 @@ public class MainApp extends Application {
     public static String userName = "0000";
     public static UsersContract user;
     public static Form form;
-    public static Assessment assessment;
     public static int deathCount = 0;
     public static String DeviceURL = "devices.php";
     public static String IMEI;
@@ -117,22 +115,11 @@ public class MainApp extends Application {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            if (form == "MP") {
-
-                MainApp.form.setGpsLat(GPSPref.getString("Latitude", "0"));
-                MainApp.form.setGpsLng(GPSPref.getString("Longitude", "0"));
-                MainApp.form.setGpsAcc(GPSPref.getString("Accuracy", "0"));
-                //MainApp.form.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
-                MainApp.form.setGpsDT(date); // Timestamp is converted to date above
-
-            } else {
-
-                MainApp.assessment.setGpslat(GPSPref.getString("Latitude", "0"));
-                MainApp.assessment.setGpslng(GPSPref.getString("Longitude", "0"));
-                MainApp.assessment.setGpsacc(GPSPref.getString("Accuracy", "0"));
-                //MainApp.form.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
-                MainApp.assessment.setGpsdate(date); // Timestamp is converted to date above
-            }
+            MainApp.form.setGpslat(GPSPref.getString("Latitude", "0"));
+            MainApp.form.setGpslng(GPSPref.getString("Longitude", "0"));
+            MainApp.form.setGpsacc(GPSPref.getString("Accuracy", "0"));
+            //MainApp.form.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
+            MainApp.form.setGpsdate(date); // Timestamp is converted to date above
 
         } catch (Exception e) {
             Log.e("GPS", "setGPS: " + e.getMessage());

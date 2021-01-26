@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class VersionAppContract {
-    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.moringaPlantation";
+    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.SES";
 
     public static abstract class VersionAppTable implements BaseColumns {
         public static final String TABLE_NAME = "versionApp";

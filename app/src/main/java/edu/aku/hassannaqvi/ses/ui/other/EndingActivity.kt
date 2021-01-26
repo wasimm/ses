@@ -9,7 +9,8 @@ import com.validatorcrawler.aliazaz.Validator
 import edu.aku.hassannaqvi.ses.CONSTANTS
 import edu.aku.hassannaqvi.ses.CONSTANTS.Companion.FSTATUS_END_FLAG
 import edu.aku.hassannaqvi.ses.R
-import edu.aku.hassannaqvi.ses.core.MainApp.*
+import edu.aku.hassannaqvi.ses.core.MainApp.appInfo
+import edu.aku.hassannaqvi.ses.core.MainApp.form
 import edu.aku.hassannaqvi.ses.databinding.ActivityEndingBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,8 +36,6 @@ class EndingActivity : AppCompatActivity() {
         }
 
         flag = intent.getStringExtra(CONSTANTS.SELECTED_MODEL).toString()
-
-        //Toast.makeText(applicationContext, ""+flag, Toast.LENGTH_SHORT).show();
     }
 
     fun BtnEnd() {
@@ -58,22 +57,12 @@ class EndingActivity : AppCompatActivity() {
         else "-1"
 
 
+        form.istatus = statusValue
+        form.istatus96x = if (bi.istatus96x.text.toString().trim().isEmpty()) "-1" else bi.istatus96x.text.toString()
+        form.endingdatetime = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(Date().time)
+
+
         /*when (flag) {
-            CONSTANTS.FORM_MP -> {
-                form.istatus = statusValue
-                form.istatus96x = if (bi.istatus96x.text.toString().trim().isEmpty()) "-1" else bi.istatus96x.text.toString()
-                form.endingdatetime = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(Date().time)
-            }
-            CONSTANTS.FORM_MA -> {
-                assessment.istatus = statusValue
-                assessment.istatus96x = if (bi.istatus96x.text.toString().trim().isEmpty()) "-1" else bi.istatus96x.text.toString()
-                assessment.endingdatetime = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(Date().time)
-            }
-        }*/
-
-
-
-        when (flag) {
             CONSTANTS.FORM_MP -> {
                 form.istatus = statusValue
                 form.istatus96x = if (bi.istatus96x.text.toString().trim().isEmpty()) "-1" else bi.istatus96x.text.toString()
@@ -84,22 +73,14 @@ class EndingActivity : AppCompatActivity() {
                 assessment.istatus96x = if (bi.istatus96x.text.toString().trim().isEmpty()) "-1" else bi.istatus96x.text.toString()
                 assessment.endingdatetime = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH).format(Date().time)
             }
-        }
+        }*/
 
     }
 
 
     private fun updateDB(): Boolean {
         val db = appInfo.dbHelper
-        val updcount =
-                when (flag) {
-                    CONSTANTS.FORM_MP -> {
-                        db.updateEnding()
-                    }
-                    else -> {
-                        db.updateAssesmentEnding()
-                    }
-                }
+        val updcount = db.updateEnding()
         return if (updcount == 1) {
             true
         } else {

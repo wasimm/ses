@@ -150,7 +150,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
             new SyncDevice(this, false).execute();
             //  *******************************************************Forms*********************************
-            Toast.makeText(getApplicationContext(), String.format("Syncing Forms %s", CONSTANTS.FORM_MP), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), String.format("Syncing Forms"), Toast.LENGTH_SHORT).show();
             if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
@@ -158,29 +158,12 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
             }
             new SyncAllData(
                     this,
-                    String.format("Forms - %s", CONSTANTS.FORM_MP),
+                    String.format("Forms"),
                     "updateSyncedForms",
                     Form.class,
                     MainApp._HOST_URL + MainApp._SERVER_URL,
-                    FormsContract.FormsTable.TABLE_NAME + CONSTANTS.FORM_MP,
+                    FormsContract.FormsTable.TABLE_NAME,
                     db.getUnsyncedForms(), 0, uploadListAdapter, uploadlist
-            ).execute();
-
-            //  *******************************************************Forms*********************************
-            Toast.makeText(getApplicationContext(), String.format("Syncing Forms %s", CONSTANTS.FORM_MA), Toast.LENGTH_SHORT).show();
-            if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    String.format("Forms - %s", CONSTANTS.FORM_MA),
-                    "updateSyncedAssesmentForms",
-                    Form.class,
-                    MainApp._HOST_URL + MainApp._SERVER_URL,
-                    "form" + CONSTANTS.FORM_MA,
-                    db.getUnsyncedAssesmentForms(), 1, uploadListAdapter, uploadlist
             ).execute();
 
             bi.noDataItem.setVisibility(View.GONE);

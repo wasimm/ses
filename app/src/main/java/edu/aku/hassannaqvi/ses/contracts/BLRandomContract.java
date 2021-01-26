@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
 
 public class BLRandomContract {
 
-    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.moringaPlantation";
+    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.SES";
 
     public static abstract class BLRandomTable implements BaseColumns {
 

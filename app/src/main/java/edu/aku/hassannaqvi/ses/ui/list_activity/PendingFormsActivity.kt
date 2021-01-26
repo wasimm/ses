@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.aku.hassannaqvi.ses.R
 import edu.aku.hassannaqvi.ses.adapter.PendingListAdapter
-import edu.aku.hassannaqvi.ses.core.MainApp
 import edu.aku.hassannaqvi.ses.databinding.ActivityPendingFormsBinding
 import edu.aku.hassannaqvi.ses.models.Form
 
@@ -21,8 +20,8 @@ class PendingFormsActivity : AppCompatActivity() {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_pending_forms)
         bi.callback = this
 
-        val unclosedForms = MainApp.appInfo.dbHelper.unclosedForms
-        setupRecyclerView(unclosedForms)
+        //val unclosedForms = MainApp.appInfo.dbHelper.unclosedForms
+        //setupRecyclerView(unclosedForms)
     }
 
     private fun setupRecyclerView(forms_lst: MutableList<Form>) {

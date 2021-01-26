@@ -10,7 +10,7 @@ public class VillagesContract {
 
     private static final String TAG = "Villages_CONTRACT";
 
-    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.moringaPlantation";
+    public static String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.SES";
 
 
     public static abstract class TableVillage implements BaseColumns {

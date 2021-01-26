@@ -24,7 +24,7 @@ android {
 
         defaultConfig {
             applicationId "edu.aku.hassannaqvi.SES"
-            minSdkVersion 28
+            minSdkVersion 22
             targetSdkVersion 30
             versionCode code
             versionName "0.1"

@@ -37,8 +37,12 @@ import edu.aku.hassannaqvi.ses.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.ses.models.Form;
 import edu.aku.hassannaqvi.ses.models.VersionApp;
 import edu.aku.hassannaqvi.ses.ui.list_activity.FormsReportDate;
-import edu.aku.hassannaqvi.ses.ui.sections.SectionMAActivity;
-import edu.aku.hassannaqvi.ses.ui.sections.SectionMPActivity;
+import edu.aku.hassannaqvi.ses.ui.sections.SectionBActivity;
+import edu.aku.hassannaqvi.ses.ui.sections.SectionCActivity;
+import edu.aku.hassannaqvi.ses.ui.sections.SectionD1Activity;
+import edu.aku.hassannaqvi.ses.ui.sections.SectionD2Activity;
+import edu.aku.hassannaqvi.ses.ui.sections.SectionEActivity;
+import edu.aku.hassannaqvi.ses.ui.sections.SectionFActivity;
 import edu.aku.hassannaqvi.ses.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.ses.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.ses.utils.CreateTable;
@@ -138,8 +142,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                 }
 
                 rSumText
-                        .append((form.getMp101() + "          ").substring(0, 10))
-                        .append((form.getMp102() + "      ").substring(0, 6))
+                        .append(("form.getMp101()" + "          ").substring(0, 10))
                         .append("  \t\t")
                         .append(iStatus)
                         .append("\t\t\t\t")
@@ -293,17 +296,33 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
     public void openSpecificActivity(View v) {
         Intent oF = null;
         switch (v.getId()) {
-            case R.id.formA:
-                oF = new Intent(this, SectionMPActivity.class);
-                break;
             case R.id.formB:
-                oF = new Intent(this, SectionMAActivity.class);
+                oF = new Intent(this, SectionBActivity.class);
+                break;
+            case R.id.formC:
+                oF = new Intent(this, SectionCActivity.class);
+                break;
+
+            case R.id.formD1:
+                oF = new Intent(this, SectionD1Activity.class);
+                break;
+
+            case R.id.formD2:
+                oF = new Intent(this, SectionD2Activity.class);
+                break;
+
+            case R.id.formE:
+                oF = new Intent(this, SectionEActivity.class);
+                break;
+
+            case R.id.formF:
+                oF = new Intent(this, SectionFActivity.class);
                 break;
             /* case R.id.formC:
                 oF = new Intent(this, SectionEActivity.class);
                 break;
              case R.id.formD:
-                oF = new Intent(this, SectionDActivity.class);
+                oF = new Intent(this, SectionD1Activity.class);
                 break;
             case R.id.formE:
                 oF = new Intent(this, SectionEActivity.class);
