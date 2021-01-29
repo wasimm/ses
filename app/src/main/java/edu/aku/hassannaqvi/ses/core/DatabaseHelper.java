@@ -19,19 +19,20 @@ import java.util.Date;
 
 import edu.aku.hassannaqvi.ses.contracts.BLRandomContract.BLRandomTable;
 import edu.aku.hassannaqvi.ses.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.ses.contracts.SchoolsContract;
 import edu.aku.hassannaqvi.ses.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.ses.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.ses.contracts.VersionAppContract.VersionAppTable;
-import edu.aku.hassannaqvi.ses.contracts.VillagesContract;
 import edu.aku.hassannaqvi.ses.models.BLRandom;
 import edu.aku.hassannaqvi.ses.models.Form;
+import edu.aku.hassannaqvi.ses.models.Schools;
 import edu.aku.hassannaqvi.ses.models.Users;
 import edu.aku.hassannaqvi.ses.models.VersionApp;
-import edu.aku.hassannaqvi.ses.models.Villages;
 
 import static edu.aku.hassannaqvi.ses.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.ses.utils.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.ses.utils.CreateTable.SQL_CREATE_FORMS;
+import static edu.aku.hassannaqvi.ses.utils.CreateTable.SQL_CREATE_SCHOOLS;
 import static edu.aku.hassannaqvi.ses.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.ses.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 
@@ -53,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_VERSIONAPP);
+        db.execSQL(SQL_CREATE_SCHOOLS);
     }
 
     @Override
@@ -196,36 +198,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-    public int syncVillage(JSONArray villageList) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(VillagesContract.TableVillage.TABLE_NAME, null, null);
-        int insertCount = 0;
-        try {
-            for (int i = 0; i < villageList.length(); i++) {
-
-                JSONObject jsonObjectVil = villageList.getJSONObject(i);
-
-                Villages village = new Villages();
-                village.Sync(jsonObjectVil);
-                ContentValues values = new ContentValues();
-
-                values.put(VillagesContract.TableVillage.COLUMN_UCNAME, village.getUcname());
-                values.put(VillagesContract.TableVillage.COLUMN_VILLAGE_NAME, village.getVillagename());
-                values.put(VillagesContract.TableVillage.COLUMN_SEEM_VID, village.getSeem_vid());
-                values.put(VillagesContract.TableVillage.COLUMN_UCID, village.getUcid());
-                long rowID = db.insert(VillagesContract.TableVillage.TABLE_NAME, null, values);
-                if (rowID != -1) insertCount++;
-            }
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncVillage(e): " + e);
-            db.close();
-        } finally {
-            db.close();
-        }
-        return insertCount;
-    }
-
     public boolean Login(String username, String password) throws SQLException {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -308,75 +280,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    /*public Collection<Form> getAllForms() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = null;
-        String[] columns = {
-                FormsTable._ID,
-                FormsTable.COLUMN_UID,
-                FormsTable.COLUMN_SEEM_VID,
-                FormsTable.COLUMN_FORMTYPE,
-                FormsTable.COLUMN_USERNAME,
-                FormsTable.COLUMN_SYSDATE,
-                FormsTable.COLUMN_MP101,
-                FormsTable.COLUMN_MP102,
-                FormsTable.COLUMN_MP103,
-                FormsTable.COLUMN_MP104,
-                FormsTable.COLUMN_MP105,
-                FormsTable.COLUMN_MP106,
-                FormsTable.COLUMN_MP107,
-                FormsTable.COLUMN_MP108,
-                FormsTable.COLUMN_MP109,
-                FormsTable.COLUMN_MP10910x,
-                FormsTable.COLUMN_MP110a,
-                FormsTable.COLUMN_MP110b,
-                FormsTable.COLUMN_MP110c,
-                FormsTable.COLUMN_MP110d,
-                //FormsTable.COLUMN_PID,
-                FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_GPSLAT,
-                FormsTable.COLUMN_GPSLNG,
-                FormsTable.COLUMN_GPSDATE,
-                FormsTable.COLUMN_GPSACC,
-                FormsTable.COLUMN_DEVICEID,
-                FormsTable.COLUMN_DEVICETAGID,
-                FormsTable.COLUMN_APPVERSION,
-
-        };
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy =
-                FormsTable.COLUMN_ID + " ASC";
-
-        Collection<Form> allForms = new ArrayList<Form>();
-        try {
-            c = db.query(
-                    FormsTable.TABLE_NAME,
-                    columns,
-                    whereClause,
-                    whereArgs,
-                    groupBy,
-                    having,
-                    orderBy
-            );
-            while (c.moveToNext()) {
-                Form form = new Form();
-                allForms.add(form.Hydrate(c));
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return allForms;
-    }*/
-
     public void updateSyncedForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -414,7 +317,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
     }
-
 
     public ArrayList<Cursor> getData(String Query) {
         //get writable database
@@ -460,7 +362,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return alc;
         }
     }
-
 
     public Collection<Form> getTodayForms(String sysdate) {
 
@@ -722,6 +623,87 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allForms;
+    }
+
+    /*public int syncSchools_old(JSONArray schoolList) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(SchoolsContract.TableSchool.TABLE_NAME, null, null);
+
+        JSONArray jsonArray = schoolList;
+
+        int insertCount = 0;
+        for (int i = 0; i < jsonArray.length(); i++) {
+
+            JSONObject jsonObjectSchool = schoolList.getJSONObject(i);
+
+            Schools S = new Schools();
+            S.Sync(jsonObjectSchool);
+
+            ContentValues values = new ContentValues();
+            values.put(SchoolsContract.TableSchool.COLUMN_SERVER_ID, S.getServer_id());
+            values.put(SchoolsContract.TableSchool.COLUMN_SEMIS_CODE, S.getSemis_code());
+            values.put(SchoolsContract.TableSchool.COLUMN_DISTRICT, S.getDistrict());
+            values.put(SchoolsContract.TableSchool.COLUMN_TEHSIL, S.getTehsil());
+            values.put(SchoolsContract.TableSchool.COLUMN_NAME, S.getName());
+            values.put(SchoolsContract.TableSchool.COLUMN_HEAD, S.getHead());
+            values.put(SchoolsContract.TableSchool.COLUMN_MEDIUM, S.getMedium());
+            values.put(SchoolsContract.TableSchool.COLUMN_S_LEVEL, S.getS_level());
+            values.put(SchoolsContract.TableSchool.COLUMN_GENDER, S.getGender());
+            values.put(SchoolsContract.TableSchool.COLUMN_STATUS, S.getStatus());
+            values.put(SchoolsContract.TableSchool.COLUMN_ENROLLMENTS, S.getEnrollments());
+            long row = db.insert(SchoolsContract.TableSchool.TABLE_NAME, null, values);
+            if (row != -1) insertCount++;
+        }
+        return insertCount;
+    }*/
+
+    public int syncSchools(JSONArray schoolList) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(SchoolsContract.TableSchool.TABLE_NAME, null, null);
+        int insertCount = 0;
+        try {
+            for (int i = 0; i < schoolList.length(); i++) {
+
+                JSONObject jsonObjectS = schoolList.getJSONObject(i);
+
+                Schools school = new Schools();
+                school.Sync(jsonObjectS);
+                ContentValues values = new ContentValues();
+                values.put(SchoolsContract.TableSchool.COLUMN_SERVER_ID, school.get_id());
+                values.put(SchoolsContract.TableSchool.COLUMN_SEMIS_CODE, school.getSemisCode());
+                values.put(SchoolsContract.TableSchool.COLUMN_DIVISION_CODE, school.getDivisionCode());
+                values.put(SchoolsContract.TableSchool.COLUMN_DIVISION_NAME, school.getDivisionName());
+                values.put(SchoolsContract.TableSchool.COLUMN_DISTRICT_CODE, school.getDistrictCode());
+                values.put(SchoolsContract.TableSchool.COLUMN_DISTRICT_NAME, school.getDistrictName());
+                values.put(SchoolsContract.TableSchool.COLUMN_TEHSIL_CODE, school.getTehsilCode());
+                values.put(SchoolsContract.TableSchool.COLUMN_TEHSIL_NAME, school.getTehsilName());
+                values.put(SchoolsContract.TableSchool.COLUMN_S_NAME, school.getsName());
+                values.put(SchoolsContract.TableSchool.COLUMN_S_HEAD, school.getsHead());
+                values.put(SchoolsContract.TableSchool.COLUMN_S_LEVEL, school.getsLevel());
+                values.put(SchoolsContract.TableSchool.COLUMN_S_TYPE, school.getsType());
+                values.put(SchoolsContract.TableSchool.COLUMN_S_MEDIUM, school.getsMedium());
+                values.put(SchoolsContract.TableSchool.COLUMN_S_CURRENT_STATUS, school.getsCurrentStatus());
+                values.put(SchoolsContract.TableSchool.COLUMN_STATUS, 0);
+                long rowID = db.insert(SchoolsContract.TableSchool.TABLE_NAME, null, values);
+                if (rowID != -1) insertCount++;
+            }
+
+        } catch (Exception e) {
+            Log.d(TAG, "syncSchool(e): " + e);
+            db.close();
+        } finally {
+            db.close();
+        }
+        return insertCount;
+    }
+
+    public Cursor getRecords() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from schools", null);
+        return res;
     }
 
 }

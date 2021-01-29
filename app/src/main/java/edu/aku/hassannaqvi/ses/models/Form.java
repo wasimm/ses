@@ -212,82 +212,6 @@ public class Form extends LiveData<Form> {
         this.section_F = section_F;
     }
 
-    /*public Form Sync(JSONObject jsonObject) throws JSONException {
-        this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
-        this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
-        this.seem_vid = jsonObject.getString(FormsTable.COLUMN_SEEM_VID);
-        this.formtype = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
-        this.username = jsonObject.getString(FormsTable.COLUMN_USERNAME);
-        this.sysdate = jsonObject.getString(FormsTable.COLUMN_SYSDATE);
-        this.mp101 = jsonObject.getString(FormsTable.COLUMN_MP101);
-        this.mp102 = jsonObject.getString(FormsTable.COLUMN_MP102);
-        this.mp103 = jsonObject.getString(FormsTable.COLUMN_MP103);
-        this.mp104 = jsonObject.getString(FormsTable.COLUMN_MP104);
-        this.mp105 = jsonObject.getString(FormsTable.COLUMN_MP105);
-        this.mp106 = jsonObject.getString(FormsTable.COLUMN_MP106);
-        this.mp107 = jsonObject.getString(FormsTable.COLUMN_MP107);
-        this.mp108 = jsonObject.getString(FormsTable.COLUMN_MP108);
-        this.mp109 = jsonObject.getString(FormsTable.COLUMN_MP109);
-        this.mp10910x = jsonObject.getString(FormsTable.COLUMN_MP10910x);
-        this.mp110a = jsonObject.getString(FormsTable.COLUMN_MP110a);
-        this.mp110b = jsonObject.getString(FormsTable.COLUMN_MP110b);
-        this.mp110c = jsonObject.getString(FormsTable.COLUMN_MP110c);
-        this.mp110d = jsonObject.getString(FormsTable.COLUMN_MP110d);
-        this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
-        this.istatus96x = jsonObject.getString(FormsTable.COLUMN_ISTATUS96x);
-        this.endingdatetime = jsonObject.getString(FormsTable.COLUMN_ENDINGDATETIME);
-        this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
-        this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
-        this.gpsDT = jsonObject.getString(FormsTable.COLUMN_GPSDATE);
-        this.gpsAcc = jsonObject.getString(FormsTable.COLUMN_GPSACC);
-        this.deviceID = jsonObject.getString(FormsTable.COLUMN_DEVICEID);
-        this.devicetagID = jsonObject.getString(FormsTable.COLUMN_DEVICETAGID);
-        this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
-        this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
-        this.appversion = jsonObject.getString(FormsTable.COLUMN_APPVERSION);
-
-        return this;
-
-    }
-    public Form Hydrate(Cursor cursor) {
-        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
-        this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
-        this.username = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
-        this.sysdate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYSDATE));
-        this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
-        this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
-        this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSDATE));
-        this.gpsAcc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSACC));
-        this.deviceID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
-        this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
-        this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
-        this.formtype = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
-        this.seem_vid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SEEM_VID));
-        this.mp101 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP101));
-
-
-        this.mp102 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP102));
-        this.mp103 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP103));
-        this.mp104 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP104));
-        this.mp105 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP105));
-        this.mp106 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP106));
-        this.mp107 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP107));
-        this.mp108 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP108));
-        this.mp109 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP109));
-        this.mp10910x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP10910x));
-        this.mp110a = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP110a));
-        this.mp110b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP110b));
-        this.mp110c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP110c));
-        this.mp110d = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_MP110d));
-
-
-        this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        this.istatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
-        this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
-
-        return this;
-    }*/
-
     public Form Sync(JSONObject jsonObject) throws JSONException {
 
         this.id = jsonObject.getString(FormsTable.COLUMN_ID);
@@ -332,6 +256,7 @@ public class Form extends LiveData<Form> {
         this.deviceid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
         this.tagid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.sysdate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYSDATE));
+        this.username = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
         this.section_B = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SECTION_B));
         this.section_C = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SECTION_C));
         this.section_D = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SECTION_D));

@@ -3,8 +3,10 @@ package edu.aku.hassannaqvi.ses.ui.sections;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +19,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import edu.aku.hassannaqvi.ses.R;
 import edu.aku.hassannaqvi.ses.contracts.FormsContract;
@@ -36,6 +40,7 @@ public class SectionBActivity extends AppCompatActivity {
     Intent oF = null;
     String SectionBActivity;
     private DatabaseHelper db;
+    private List<String> schools;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,19 @@ public class SectionBActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b);
         bi.setCallback(this);
         setupSkip();
-        populateSpinner(this);
+
+        db = MainApp.appInfo.getDbHelper();
+        Cursor schoolsList = db.getRecords();
+        if (schoolsList.getCount() > 0) {
+            schoolsList.moveToFirst();
+            schools = new ArrayList<>();
+            schools.add("....");
+            for (int i = 0; i < schoolsList.getCount(); i++) {
+                schools.add(schoolsList.getString(schoolsList.getColumnIndex("semisCode")));
+                schoolsList.moveToNext();
+            }
+        }
+        bi.B4.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, schools));
     }
 
     private void setupSkip() {
@@ -229,7 +246,7 @@ public class SectionBActivity extends AppCompatActivity {
         json.put("B1", bi.B1.getText().toString().trim().isEmpty() ? "-1" : bi.B1.getText().toString().trim());
         json.put("B2", bi.B2.getText().toString().trim().isEmpty() ? "-1" : bi.B2.getText().toString().trim());
         json.put("B3", bi.B3.getText().toString().trim().isEmpty() ? "-1" : bi.B3.getText().toString().trim());
-        json.put("B4", bi.B4.getText().toString().trim().isEmpty() ? "-1" : bi.B4.getText().toString().trim());
+        json.put("B4", bi.B4.getSelectedItem().toString().trim().isEmpty() ? "-1" : bi.B4.getSelectedItem().toString());
 
         json.put("B5", bi.B501.isChecked() ? "1"
                 : bi.B502.isChecked() ? "2"

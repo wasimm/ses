@@ -38,11 +38,6 @@ import edu.aku.hassannaqvi.ses.models.Form;
 import edu.aku.hassannaqvi.ses.models.VersionApp;
 import edu.aku.hassannaqvi.ses.ui.list_activity.FormsReportDate;
 import edu.aku.hassannaqvi.ses.ui.sections.SectionBActivity;
-import edu.aku.hassannaqvi.ses.ui.sections.SectionCActivity;
-import edu.aku.hassannaqvi.ses.ui.sections.SectionD1Activity;
-import edu.aku.hassannaqvi.ses.ui.sections.SectionD2Activity;
-import edu.aku.hassannaqvi.ses.ui.sections.SectionEActivity;
-import edu.aku.hassannaqvi.ses.ui.sections.SectionFActivity;
 import edu.aku.hassannaqvi.ses.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.ses.utils.AppUtilsKt;
 import edu.aku.hassannaqvi.ses.utils.CreateTable;
@@ -299,7 +294,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
             case R.id.formB:
                 oF = new Intent(this, SectionBActivity.class);
                 break;
-            case R.id.formC:
+            /*case R.id.formC:
                 oF = new Intent(this, SectionCActivity.class);
                 break;
 
@@ -317,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
 
             case R.id.formF:
                 oF = new Intent(this, SectionFActivity.class);
-                break;
+                break;*/
             /* case R.id.formC:
                 oF = new Intent(this, SectionEActivity.class);
                 break;

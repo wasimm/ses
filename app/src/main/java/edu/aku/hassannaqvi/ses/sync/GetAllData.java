@@ -20,8 +20,8 @@ import java.net.URL;
 import java.util.List;
 
 import edu.aku.hassannaqvi.ses.adapter.SyncListAdapter;
+import edu.aku.hassannaqvi.ses.contracts.SchoolsContract;
 import edu.aku.hassannaqvi.ses.contracts.UsersContract;
-import edu.aku.hassannaqvi.ses.contracts.VillagesContract;
 import edu.aku.hassannaqvi.ses.core.DatabaseHelper;
 import edu.aku.hassannaqvi.ses.core.MainApp;
 import edu.aku.hassannaqvi.ses.models.SyncModel;
@@ -53,18 +53,12 @@ public class GetAllData extends AsyncTask<String, String, String> {
         this.list = list;
         TAG = "Get" + syncClass;
         switch (syncClass) {
-            case "User":
+            case "Users":
                 position = 0;
                 break;
-            /*case "VersionApp":
-                position = 1;
-                break;*/
-            case "Villages":
+            case "Schools":
                 position = 1;
                 break;
-            /*case "Assessment":
-                position = 3;
-                break;*/
         }
         list.get(position).settableName(syncClass);
     }
@@ -87,18 +81,13 @@ public class GetAllData extends AsyncTask<String, String, String> {
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
         switch (values[0]) {
-            case "User":
+            case "Users":
                 position = 0;
                 break;
-            /*case "VersionApp":
-                position = 1;
-                break;*/
-            case "Villages":
+
+            case "Schools":
                 position = 1;
                 break;
-            /*case "Assessment":
-                position = 3;
-                break;*/
         }
         list.get(position).setstatus("Syncing");
         list.get(position).setstatusID(2);
@@ -115,35 +104,31 @@ public class GetAllData extends AsyncTask<String, String, String> {
         URL url = null;
         try {
             switch (syncClass) {
-                case "User":
+                case "Users":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
                     tableName = UsersContract.UsersTable.TABLE_NAME;
                     position = 0;
                     break;
-                /*case "VersionApp":
-                    url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable.SERVER_URI);
-                    position = 1;
-                    break;*/
-                case "Villages":
+                case "Schools":
                     url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = VillagesContract.TableVillage.TABLE_NAME;
+                    tableName = SchoolsContract.TableSchool.TABLE_NAME;
                     position = 1;
                     break;
-                /*case "Assessment":
-                    url = new URL(MainApp._HOST_URL + MainApp._SERVER_GET_URL);
-                    tableName = AssessmentContract.TableAssessment.TABLE_NAME;
-                    position = 3;
-                    break;*/
             }
 
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(100000 /* milliseconds */);
+            urlConnection.setReadTimeout(10000000 /* milliseconds */);
             urlConnection.setConnectTimeout(150000 /* milliseconds */);
 
-            switch (syncClass) {
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoOutput(true);
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("charset", "utf-8");
+            urlConnection.setUseCaches(false);
+
+            /*switch (syncClass) {
                 case "User":
-                case "Villages":
-                    /*case "Assessment":*/
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setDoOutput(true);
                     urlConnection.setDoInput(true);
@@ -161,6 +146,35 @@ public class GetAllData extends AsyncTask<String, String, String> {
                         e1.printStackTrace();
                     }
                     Log.d(TAG, "downloadUrl: " + json.toString());
+                    wr.writeBytes(json.toString());
+                    wr.flush();
+                    wr.close();
+                    break;
+            }*/
+
+            urlConnection.connect();
+            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+            JSONObject json = new JSONObject();
+
+            switch (syncClass) {
+                case "Users":
+                    try {
+                        json.put("table", tableName);
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                    wr.writeBytes(json.toString());
+                    wr.flush();
+                    wr.close();
+                    break;
+
+                case "Schools":
+                    try {
+                        json.put("table", tableName);
+                        json.put("filter", "_id < 13000");
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
                     wr.writeBytes(json.toString());
                     wr.flush();
                     wr.close();
@@ -207,26 +221,17 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     JSONArray jsonArray = new JSONArray();
                     int insertCount = 0;
                     switch (syncClass) {
-                        case "User":
+                        case "Users":
                             jsonArray = new JSONArray(result);
                             insertCount = db.syncUser(jsonArray);
                             position = 0;
                             break;
-                        /*case "VersionApp":
-                            insertCount = db.syncVersionApp(new JSONObject(result));
-                            if (insertCount == 1) jsonArray.put("1");
-                            position = 1;
-                            break;*/
-                        case "Villages":
+
+                        case "Schools":
                             jsonArray = new JSONArray(result);
-                            insertCount = db.syncVillage(jsonArray);
+                            insertCount = db.syncSchools(jsonArray);
                             position = 1;
                             break;
-                        /*case "Assessment":
-                            jsonArray = new JSONArray(result);
-                            insertCount = db.syncAssessment(jsonArray);
-                            position = 3;
-                            break;*/
                     }
 
                     pd.setMessage("Received: " + jsonArray.length());

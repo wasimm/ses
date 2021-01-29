@@ -30,6 +30,42 @@
                     android:text="@string/sbh" />
             </LinearLayout>
 
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVB4"
+                style="@style/cardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/Q_B4" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/B4" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/B4"
+                        style="@style/spinner1" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
             <!--B1  Input-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVB1"
@@ -62,7 +98,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="@string/B1" />
-
                     </LinearLayout>
 
                     <EditText
@@ -156,7 +191,7 @@
             </androidx.cardview.widget.CardView>
 
             <!--B4  Input-->
-            <androidx.cardview.widget.CardView
+            <!--<androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVB4"
                 style="@style/cardView">
 
@@ -192,7 +227,7 @@
                         android:hint="@string/B4" />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
 
             <!--B5  Radio-->
             <androidx.cardview.widget.CardView
@@ -1640,6 +1675,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2801"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="99"
                             app:minValue="0"
@@ -1657,6 +1693,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2802"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="99"
                             app:minValue="0"
@@ -1705,6 +1742,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2901"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="50"
                             app:minValue="0"
@@ -1722,6 +1760,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2902"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="50"
                             app:minValue="0"
@@ -1739,6 +1778,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2903"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="50"
                             app:minValue="0"
@@ -1756,6 +1796,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2904"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="50"
                             app:minValue="0"
@@ -1773,6 +1814,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2905"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="50"
                             app:minValue="0"
@@ -1790,6 +1832,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B2906"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="50"
                             app:minValue="0"
@@ -2028,6 +2071,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B3401"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="25"
                             app:minValue="0"
@@ -2119,6 +2163,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B3601"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="500"
                             app:minValue="1"
@@ -2210,6 +2255,7 @@
                             android:layout_height="56dp"
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B3801"
+                            android:inputType="number"
                             app:mask="##"
                             app:maxValue="300"
                             app:minValue="0"

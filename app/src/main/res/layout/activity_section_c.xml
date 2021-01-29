@@ -471,6 +471,7 @@
                         android:layout_height="56dp"
                         android:layout_marginBottom="12dp"
                         android:hint="@string/C501"
+                        android:inputType="number"
                         app:mask="##"
                         app:maxValue="30"
                         app:minValue="0"

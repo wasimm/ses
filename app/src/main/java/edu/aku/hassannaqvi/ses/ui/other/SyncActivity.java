@@ -397,7 +397,9 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         protected String doInBackground(Boolean... booleans) {
             runOnUiThread(() -> {
 
-                String[] syncItems = {"User", "Villages"};
+                String[] syncItems = {"Users", "Schools"};
+
+
                 for (String syncItem : syncItems) {
                     if (listActivityCreated) {
                         model = new SyncModel();
@@ -406,6 +408,23 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     }
                     new GetAllData(mContext, syncItem, syncListAdapter, list).execute();
                 }
+
+                /*if (booleans[0]) {
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "Users", syncListAdapter, list).execute();
+
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "Schools", syncListAdapter, list).execute();
+
+                }*/
 
                 listActivityCreated = false;
             });

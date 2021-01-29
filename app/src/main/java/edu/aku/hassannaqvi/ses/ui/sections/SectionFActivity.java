@@ -4,11 +4,13 @@ package edu.aku.hassannaqvi.ses.ui.sections;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -47,22 +49,48 @@ public class SectionFActivity extends AppCompatActivity {
 
     private void setupSkip() {
 
-       /* bi.ma105.setOnCheckedChangeListener((radioGroup, i) -> {
-            Clear.clearAllFields(bi.fldGrpCVma106);
-            Clear.clearAllFields(bi.fldGrpCVma107);
-            Clear.clearAllFields(bi.fldGrpCVma108);
-            bi.fldGrpCVma106.setVisibility(View.GONE);
-            bi.fldGrpCVma107.setVisibility(View.GONE);
-            bi.fldGrpCVma108.setVisibility(View.GONE);
+        bi.F1.setOnCheckedChangeListener((radioGroup, i) -> {
+            Clear.clearAllFields(bi.fldGrpCVF2);
+            Clear.clearAllFields(bi.fldGrpCVF3);
+            Clear.clearAllFields(bi.fldGrpCVF4);
+            Clear.clearAllFields(bi.fldGrpCVF5);
+            bi.fldGrpCVF2.setVisibility(View.GONE);
+            bi.fldGrpCVF3.setVisibility(View.GONE);
+            bi.fldGrpCVF4.setVisibility(View.GONE);
+            bi.fldGrpCVF5.setVisibility(View.GONE);
 
-            if (i == bi.ma10501.getId()) {
-                bi.fldGrpCVma107.setVisibility(View.VISIBLE);
-            } else if (i == bi.ma10502.getId()) {
-                bi.fldGrpCVma106.setVisibility(View.VISIBLE);
-            } else if (i == bi.ma10503.getId()) {
-                bi.fldGrpCVma108.setVisibility(View.VISIBLE);
+            if (i == bi.F101.getId() || i == bi.F198.getId()) {
+                bi.fldGrpCVF2.setVisibility(View.VISIBLE);
+                bi.fldGrpCVF3.setVisibility(View.VISIBLE);
+                bi.fldGrpCVF4.setVisibility(View.VISIBLE);
+                bi.fldGrpCVF5.setVisibility(View.VISIBLE);
+            } else {
+                Clear.clearAllFields(bi.fldGrpCVF2);
+                Clear.clearAllFields(bi.fldGrpCVF3);
+                Clear.clearAllFields(bi.fldGrpCVF4);
+                Clear.clearAllFields(bi.fldGrpCVF5);
+                bi.fldGrpCVF2.setVisibility(View.GONE);
+                bi.fldGrpCVF3.setVisibility(View.GONE);
+                bi.fldGrpCVF4.setVisibility(View.GONE);
+                bi.fldGrpCVF5.setVisibility(View.GONE);
             }
-        });*/
+        });
+
+
+        bi.F5.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (i == bi.F502.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVF6);
+                Clear.clearAllFields(bi.fldGrpCVF7);
+                Clear.clearAllFields(bi.fldGrpCVF8);
+                bi.fldGrpCVF6.setVisibility(View.GONE);
+                bi.fldGrpCVF7.setVisibility(View.GONE);
+                bi.fldGrpCVF8.setVisibility(View.GONE);
+            } else {
+                bi.fldGrpCVF6.setVisibility(View.VISIBLE);
+                bi.fldGrpCVF7.setVisibility(View.VISIBLE);
+                bi.fldGrpCVF8.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 

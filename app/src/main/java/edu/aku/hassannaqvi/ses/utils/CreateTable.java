@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.ses.utils;
 
 import edu.aku.hassannaqvi.ses.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.ses.contracts.SchoolsContract;
 import edu.aku.hassannaqvi.ses.contracts.UsersContract;
 import edu.aku.hassannaqvi.ses.contracts.VersionAppContract;
 
@@ -50,5 +51,25 @@ public final class CreateTable {
             VersionAppContract.VersionAppTable.COLUMN_VERSION_CODE + " TEXT, " +
             VersionAppContract.VersionAppTable.COLUMN_VERSION_NAME + " TEXT, " +
             VersionAppContract.VersionAppTable.COLUMN_PATH_NAME + " TEXT " +
+            ");";
+
+
+    public static final String SQL_CREATE_SCHOOLS = "CREATE TABLE " + SchoolsContract.TableSchool.TABLE_NAME + " (" +
+            SchoolsContract.TableSchool.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            SchoolsContract.TableSchool.COLUMN_SERVER_ID + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_SEMIS_CODE + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_DIVISION_CODE + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_DIVISION_NAME + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_DISTRICT_CODE + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_DISTRICT_NAME + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_TEHSIL_CODE + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_TEHSIL_NAME + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_S_NAME + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_S_HEAD + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_S_LEVEL + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_S_TYPE + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_S_MEDIUM + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_S_CURRENT_STATUS + " TEXT, " +
+            SchoolsContract.TableSchool.COLUMN_STATUS + " TEXT " +
             ");";
 }

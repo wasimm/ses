@@ -21,7 +21,7 @@ public class UsersContract {
         public static final String COLUMN_PASSWORD = "password";
         public static final String COLUMN_FULL_NAME = "full_name";
         public static final String SERVER_URI = "users.php";
-        public static String PATH = "user";
+        public static String PATH = "users";
         public static final String CONTENT_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH;
         public static final String CONTENT_ITEM_TYPE =
