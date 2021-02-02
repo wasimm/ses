@@ -36,7 +36,7 @@ public class CaptureImageActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_capture_images);
         bi.setCallback(this);
         setupSkip();
-        PhotoSerial = 1;
+        PhotoSerial = 0;
 
         /*Intent intent = getIntent();
         skip_flag = intent.getStringExtra("skip_flag");
@@ -91,8 +91,8 @@ public class CaptureImageActivity extends AppCompatActivity {
     private boolean formValidation() {
 
         //if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {return false;}
-        if (PhotoSerial <= 1 && PhotoSerial >= 4) {
-            Toast.makeText(this, "Minimum 1 and maximum 4 picture(s) must be taken", Toast.LENGTH_LONG).show();
+        if (PhotoSerial < 1) {
+            Toast.makeText(this, "minimum 1 picture must be taken", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
@@ -100,17 +100,22 @@ public class CaptureImageActivity extends AppCompatActivity {
 
     public void TakePhoto(int id) {
 
-        Intent intent = new Intent(this, TakePhoto.class);
-        intent.putExtra("picID", semisCode + PhotoSerial);
-        intent.putExtra("childName", "");
-        intent.putExtra("picView", "School".toUpperCase());
-        if (id == 1) {
-            intent.putExtra("viewFacing", "1");
+        if (PhotoSerial > 3) {
+            Toast.makeText(this, "Maximum 4 pictures are allowed", Toast.LENGTH_SHORT).show();
         } else {
-            intent.putExtra("viewFacing", "2");
-        }
 
-        startActivityForResult(intent, 1); // Activity is started with requestCode 1 = Front
+            Intent intent = new Intent(this, TakePhoto.class);
+            intent.putExtra("picID", semisCode + PhotoSerial);
+            intent.putExtra("childName", "");
+            intent.putExtra("picView", "School".toUpperCase());
+            if (id == 1) {
+                intent.putExtra("viewFacing", "1");
+            } else {
+                intent.putExtra("viewFacing", "2");
+            }
+
+            startActivityForResult(intent, 1); // Activity is started with requestCode 1 = Front
+        }
     }
 
     @Override
@@ -128,4 +133,7 @@ public class CaptureImageActivity extends AppCompatActivity {
         }
     }
 
+    public void onBackPressed() {
+        Toast.makeText(this, "You Can't go back", Toast.LENGTH_LONG).show();
+    }
 }

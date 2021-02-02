@@ -311,4 +311,8 @@ public class SectionD2Activity extends AppCompatActivity {
 
         return true;
     }
+
+    public void onBackPressed() {
+        Toast.makeText(this, "You Can't go back", Toast.LENGTH_LONG).show();
+    }
 }
