@@ -34,6 +34,7 @@ public class SectionCActivity extends AppCompatActivity {
     private int PhotoSerial;
     private List<String> somelist;
     private DatabaseHelper db;
+    private String semisCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,8 @@ public class SectionCActivity extends AppCompatActivity {
         setupSkip();
         populateSpinner(this);
 
-        PhotoSerial = 1;
+        Intent intent = getIntent();
+        semisCode = intent.getStringExtra("semisCode");
     }
 
     private void setupSkip() {
@@ -97,7 +99,7 @@ public class SectionCActivity extends AppCompatActivity {
         }
         if (UpdateDB()) {
             finish();
-            startActivity(new Intent(this, SectionD1Activity.class));
+            startActivity(new Intent(this, SectionD1Activity.class).putExtra("semisCode", semisCode));
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }

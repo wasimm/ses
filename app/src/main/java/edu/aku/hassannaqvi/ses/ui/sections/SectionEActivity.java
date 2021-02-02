@@ -33,6 +33,7 @@ public class SectionEActivity extends AppCompatActivity {
     private int PhotoSerial;
     private List<String> somelist;
     private DatabaseHelper db;
+    private String semisCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,8 @@ public class SectionEActivity extends AppCompatActivity {
         setupSkip();
         populateSpinner(this);
 
-        PhotoSerial = 1;
+        Intent intent = getIntent();
+        semisCode = intent.getStringExtra("semisCode");
     }
 
     private void setupSkip() {

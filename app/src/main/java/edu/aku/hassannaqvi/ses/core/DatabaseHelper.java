@@ -706,4 +706,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getSchool(String semisCode) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from schools where semisCode = '" + semisCode + "'", null);
+        return res;
+    }
+
 }

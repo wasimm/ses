@@ -4,9 +4,12 @@ package edu.aku.hassannaqvi.ses.ui.sections;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,11 +39,18 @@ import static edu.aku.hassannaqvi.ses.core.MainApp.form;
 
 public class SectionBActivity extends AppCompatActivity {
 
+    /*private static final String[] COUNTRIES = new String[] {
+            "Belgium", "France", "Italy", "Germany", "Spain"
+    };
+    String[] language ={"C","C++","Java",".NET","iPhone","Android","ASP.NET","PHP"};
+    */
+
     ActivitySectionBBinding bi;
     Intent oF = null;
     String SectionBActivity;
     private DatabaseHelper db;
     private List<String> schools;
+    private String semisCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +58,30 @@ public class SectionBActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b);
         bi.setCallback(this);
         setupSkip();
+        populateSpinner(this);
+
+
+
+        /*TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                String selectedValue = charSequence.toString();
+
+                Toast.makeText(getApplicationContext(), "" + selectedValue, Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        };
+        bi.B4.addTextChangedListener(textWatcher);*/
+    }
+
+    private void populateSpinner(final Context context) {
 
         db = MainApp.appInfo.getDbHelper();
         Cursor schoolsList = db.getRecords();
@@ -60,10 +94,33 @@ public class SectionBActivity extends AppCompatActivity {
                 schoolsList.moveToNext();
             }
         }
-        bi.B4.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, schools));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.select_dialog_item, schools);
+        //Getting the instance of AutoCompleteTextView
+        AutoCompleteTextView activity = findViewById(R.id.B4);
+        activity.setThreshold(1);//will start working from first character
+        activity.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+        activity.setTextColor(Color.GREEN);
     }
 
     private void setupSkip() {
+
+
+        bi.B4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // TODO
+                semisCode = bi.B4.getText().toString().trim();
+                db = MainApp.appInfo.getDbHelper();
+                Cursor school = db.getSchool(semisCode);
+                if (school.getCount() > 0) {
+                    school.moveToFirst();
+                    bi.B1.setText(school.getString(school.getColumnIndex("districtName")));
+                    bi.B3.setText(school.getString(school.getColumnIndex("sName")));
+                }
+            }
+        });
 
         bi.B5.setOnCheckedChangeListener((radioGroup, i) -> {
             Clear.clearAllFields(bi.fldGrpCVB6B45);
@@ -82,6 +139,30 @@ public class SectionBActivity extends AppCompatActivity {
                 bi.fldGrpCVB7.setVisibility(View.GONE);
             } else {
                 bi.fldGrpCVB7.setVisibility(View.VISIBLE);
+            }
+        });
+
+        bi.B7.setOnCheckedChangeListener((radioGroup, i) -> {
+
+            if (i == bi.B701.getId()) {
+                Clear.clearAllFields(bi.fldGrpCVB11);
+                Clear.clearAllFields(bi.fldGrpCVB12);
+                Clear.clearAllFields(bi.fldGrpCVB13);
+                Clear.clearAllFields(bi.fldGrpCVB14);
+                Clear.clearAllFields(bi.fldGrpCVB15);
+                bi.fldGrpCVB11.setVisibility(View.GONE);
+                bi.fldGrpCVB12.setVisibility(View.GONE);
+                bi.fldGrpCVB13.setVisibility(View.GONE);
+                bi.fldGrpCVB14.setVisibility(View.GONE);
+                bi.fldGrpCVB15.setVisibility(View.GONE);
+
+            } else {
+
+                bi.fldGrpCVB11.setVisibility(View.VISIBLE);
+                bi.fldGrpCVB12.setVisibility(View.VISIBLE);
+                bi.fldGrpCVB13.setVisibility(View.VISIBLE);
+                bi.fldGrpCVB14.setVisibility(View.VISIBLE);
+                bi.fldGrpCVB15.setVisibility(View.VISIBLE);
             }
         });
 
@@ -126,7 +207,6 @@ public class SectionBActivity extends AppCompatActivity {
                 bi.fldGrpCVB27.setVisibility(View.VISIBLE);
             }
         });
-
 
         bi.B33.setOnCheckedChangeListener((radioGroup, i) -> {
             if (i == bi.B3302.getId()) {
@@ -175,13 +255,6 @@ public class SectionBActivity extends AppCompatActivity {
                 bi.fldGrpCVB43.setVisibility(View.VISIBLE);
             }
         });
-
-    }
-
-    private void populateSpinner(final Context context) {
-
-        db = MainApp.appInfo.getDbHelper();
-
     }
 
     public void BtnContinue() {
@@ -194,11 +267,10 @@ public class SectionBActivity extends AppCompatActivity {
         if (UpdateDB()) {
             finish();
             if (bi.B502.isChecked() || bi.B503.isChecked()) {
-                startActivity(new Intent(this, CaptureImageActivity.class).putExtra("skip_flag", "FB"));
+                startActivity(new Intent(this, CaptureImageActivity.class).putExtra("skip_flag", "FB").putExtra("semisCode", semisCode));
             } else {
-                startActivity(new Intent(this, SectionCActivity.class));
+                startActivity(new Intent(this, SectionCActivity.class).putExtra("semisCode", semisCode));
             }
-
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();
         }
@@ -246,7 +318,7 @@ public class SectionBActivity extends AppCompatActivity {
         json.put("B1", bi.B1.getText().toString().trim().isEmpty() ? "-1" : bi.B1.getText().toString().trim());
         json.put("B2", bi.B2.getText().toString().trim().isEmpty() ? "-1" : bi.B2.getText().toString().trim());
         json.put("B3", bi.B3.getText().toString().trim().isEmpty() ? "-1" : bi.B3.getText().toString().trim());
-        json.put("B4", bi.B4.getSelectedItem().toString().trim().isEmpty() ? "-1" : bi.B4.getSelectedItem().toString());
+        json.put("B4", bi.B4.getText().toString().trim().isEmpty() ? "-1" : bi.B4.getText().toString());
 
         json.put("B5", bi.B501.isChecked() ? "1"
                 : bi.B502.isChecked() ? "2"

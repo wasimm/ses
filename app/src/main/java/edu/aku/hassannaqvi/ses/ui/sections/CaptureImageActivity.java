@@ -28,6 +28,7 @@ public class CaptureImageActivity extends AppCompatActivity {
     private int PhotoSerial;
     private List<String> somelist;
     private DatabaseHelper db;
+    private String semisCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,9 @@ public class CaptureImageActivity extends AppCompatActivity {
             F.BtnContinue();
             finish();
         }*/
+
+        Intent intent = getIntent();
+        semisCode = intent.getStringExtra("semisCode");
     }
 
 
@@ -86,7 +90,8 @@ public class CaptureImageActivity extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (PhotoSerial <= 1) {
+        //if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {return false;}
+        if (PhotoSerial <= 1 && PhotoSerial >= 4) {
             Toast.makeText(this, "Minimum 1 and maximum 4 picture(s) must be taken", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -96,7 +101,7 @@ public class CaptureImageActivity extends AppCompatActivity {
     public void TakePhoto(int id) {
 
         Intent intent = new Intent(this, TakePhoto.class);
-        intent.putExtra("picID", "Variables_" + PhotoSerial);
+        intent.putExtra("picID", semisCode + PhotoSerial);
         intent.putExtra("childName", "");
         intent.putExtra("picView", "School".toUpperCase());
         if (id == 1) {

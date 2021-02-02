@@ -121,7 +121,7 @@
     <string name="Q_B45">B45</string>
     <!-- Section B Questions End -->
 
-    <string name="B1">Enumerator ID:</string>
+    <string name="B1">District Name:</string>
     <string name="B2">Date Of Visit:</string>
     <string name="B3">Name Of School:</string>
     <string name="B4">School SEMIS Code:</string>
@@ -228,7 +228,7 @@
     <string name="B33">Does school has a counseller?</string>
     <string name="B3301">Yes</string>
     <string name="B3302">No</string>
-    <string name="B34">If yes, how many days a counseller use to visit school in a month?</string>
+    <string name="B34">If yes, how many days a counselor use to visit school in a month?</string>
     <string name="B3401">No. of days</string>
     <string name="B35">Does school has a library?</string>
     <string name="B3501">Yes</string>
@@ -604,7 +604,7 @@
     <string name="D3701">Yes</string>
     <string name="D3702">No</string>
     <string name="D3798">Don\'t Know</string>
-    <string name="D38">Are papad available at vendors outside the school premises?</string>
+    <string name="D38">Are Pappar available at vendors outside the school premises?</string>
     <string name="D3801">Yes</string>
     <string name="D3802">No</string>
     <string name="D3898">Don\'t Know</string>
@@ -892,11 +892,10 @@
     <string name="F502">No</string>
     <string name="F598">Don’t know</string>
     <string name="F6">How many food/drink posters/billboards are there outside the school premises?</string>
-    <string name="F601">1-51</string>
+    <string name="F601">1-5</string>
     <string name="F602">5-10</string>
     <string name="F603">10-15</string>
     <string name="F604">20 or more</string>
-    <string name="F605">No</string>
     <string name="F7">What brands are promoted outside the school premises? (Multiple options) </string>
     <string name="F701">Nestle</string>
     <string name="F702">Hilal</string>

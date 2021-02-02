@@ -33,6 +33,7 @@ public class SectionD1Activity extends AppCompatActivity {
     private int PhotoSerial;
     private List<String> somelist;
     private DatabaseHelper db;
+    private String semisCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,9 @@ public class SectionD1Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_d1);
         bi.setCallback(this);
         setupSkip();
-        PhotoSerial = 1;
+
+        Intent intent = getIntent();
+        semisCode = intent.getStringExtra("semisCode");
     }
 
     private void setupSkip() {
@@ -144,9 +147,9 @@ public class SectionD1Activity extends AppCompatActivity {
         if (UpdateDB()) {
             finish();
             if (bi.D102.isChecked() && bi.D202.isChecked()) {
-                startActivity(new Intent(this, SectionD2Activity.class).putExtra("skip", true));
+                startActivity(new Intent(this, SectionD2Activity.class).putExtra("skip", true).putExtra("semisCode", semisCode));
             } else {
-                startActivity(new Intent(this, SectionD2Activity.class));
+                startActivity(new Intent(this, SectionD2Activity.class).putExtra("semisCode", semisCode));
             }
         } else {
             Toast.makeText(this, "Sorry. You can't go further.\n Please contact IT Team (Failed to update DB)", Toast.LENGTH_SHORT).show();

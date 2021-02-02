@@ -34,6 +34,7 @@ public class SectionFActivity extends AppCompatActivity {
     private int PhotoSerial;
     private List<String> somelist;
     private DatabaseHelper db;
+    private String semisCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +44,20 @@ public class SectionFActivity extends AppCompatActivity {
         setupSkip();
         populateSpinner(this);
 
-        PhotoSerial = 1;
+        Intent intent = getIntent();
+        semisCode = intent.getStringExtra("semisCode");
     }
-
 
     private void setupSkip() {
 
         bi.F1.setOnCheckedChangeListener((radioGroup, i) -> {
+
             Clear.clearAllFields(bi.fldGrpCVF2);
             Clear.clearAllFields(bi.fldGrpCVF3);
             Clear.clearAllFields(bi.fldGrpCVF4);
-            Clear.clearAllFields(bi.fldGrpCVF5);
             bi.fldGrpCVF2.setVisibility(View.GONE);
             bi.fldGrpCVF3.setVisibility(View.GONE);
             bi.fldGrpCVF4.setVisibility(View.GONE);
-            bi.fldGrpCVF5.setVisibility(View.GONE);
 
             if (i == bi.F101.getId() || i == bi.F198.getId()) {
                 bi.fldGrpCVF2.setVisibility(View.VISIBLE);
@@ -68,11 +68,9 @@ public class SectionFActivity extends AppCompatActivity {
                 Clear.clearAllFields(bi.fldGrpCVF2);
                 Clear.clearAllFields(bi.fldGrpCVF3);
                 Clear.clearAllFields(bi.fldGrpCVF4);
-                Clear.clearAllFields(bi.fldGrpCVF5);
                 bi.fldGrpCVF2.setVisibility(View.GONE);
                 bi.fldGrpCVF3.setVisibility(View.GONE);
                 bi.fldGrpCVF4.setVisibility(View.GONE);
-                bi.fldGrpCVF5.setVisibility(View.GONE);
             }
         });
 
@@ -94,13 +92,11 @@ public class SectionFActivity extends AppCompatActivity {
 
     }
 
-
     private void populateSpinner(final Context context) {
 
         db = MainApp.appInfo.getDbHelper();
 
     }
-
 
     public void BtnContinue() {
         if (!formValidation()) return;
@@ -122,7 +118,6 @@ public class SectionFActivity extends AppCompatActivity {
         startActivity(oF);
     }
 
-
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         int updcount = db.updatesFormColumn(FormsContract.FormsTable.COLUMN_SECTION_F, MainApp.form.getSection_F());
@@ -133,7 +128,6 @@ public class SectionFActivity extends AppCompatActivity {
             return false;
         }
     }
-
 
     private void SaveDraft() throws JSONException {
 
@@ -187,7 +181,6 @@ public class SectionFActivity extends AppCompatActivity {
                 : bi.F602.isChecked() ? "2"
                 : bi.F603.isChecked() ? "3"
                 : bi.F604.isChecked() ? "4"
-                : bi.F605.isChecked() ? "5"
                 : "-1");
 
         json.put("F701", bi.F701.isChecked() ? "1" : "-1");
@@ -221,7 +214,6 @@ public class SectionFActivity extends AppCompatActivity {
 
         MainApp.form.setSection_F(String.valueOf(json));
     }
-
 
     private boolean formValidation() {
 
