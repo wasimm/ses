@@ -101,7 +101,7 @@ public class SectionBActivity extends AppCompatActivity {
         AutoCompleteTextView activity = findViewById(R.id.B4);
         activity.setThreshold(1);//will start working from first character
         activity.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
-        activity.setTextColor(Color.GREEN);
+        activity.setTextColor(Color.parseColor("#16A085"));
     }
 
     private void setupSkip() {
