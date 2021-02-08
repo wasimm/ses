@@ -76,8 +76,6 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         bi.setCallback(this);
         list = new ArrayList<>();
         uploadlist = new ArrayList<>();
-        bi.noItem.setVisibility(View.VISIBLE);
-        bi.noDataItem.setVisibility(View.VISIBLE);
         listActivityCreated = true;
         uploadlistActivityCreated = true;
         sharedPref = getSharedPreferences("src", MODE_PRIVATE);
@@ -117,11 +115,6 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         bi.rvSyncList.setItemAnimator(new DefaultItemAnimator());
         bi.rvSyncList.setAdapter(syncListAdapter);
         syncListAdapter.notifyDataSetChanged();
-        if (syncListAdapter.getItemCount() > 0) {
-            bi.noItem.setVisibility(View.GONE);
-        } else {
-            bi.noItem.setVisibility(View.VISIBLE);
-        }
     }
 
     void setUploadAdapter() {
@@ -131,11 +124,6 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         bi.rvUploadList.setItemAnimator(new DefaultItemAnimator());
         bi.rvUploadList.setAdapter(uploadListAdapter);
         uploadListAdapter.notifyDataSetChanged();
-        if (uploadListAdapter.getItemCount() > 0) {
-            bi.noDataItem.setVisibility(View.GONE);
-        } else {
-            bi.noDataItem.setVisibility(View.VISIBLE);
-        }
     }
 
     public void syncServer() {
@@ -158,15 +146,13 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
             }
             new SyncAllData(
                     this,
-                    String.format("Forms"),
+                    "Forms",
                     "updateSyncedForms",
                     Form.class,
                     MainApp._HOST_URL + MainApp._SERVER_URL,
                     FormsContract.FormsTable.TABLE_NAME,
                     db.getUnsyncedForms(), 0, uploadListAdapter, uploadlist
             ).execute();
-
-            bi.noDataItem.setVisibility(View.GONE);
 
             uploadlistActivityCreated = false;
 
