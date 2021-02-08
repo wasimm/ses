@@ -2514,7 +2514,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <!--B44  Input-->
-                <androidx.cardview.widget.CardView
+                <!--<androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVB44"
                     style="@style/cardView">
 
@@ -2549,10 +2549,10 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B44" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
 
                 <!--B45  Input-->
-                <androidx.cardview.widget.CardView
+                <!--<androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVB45"
                     style="@style/cardView">
 
@@ -2587,7 +2587,7 @@
                             android:layout_marginBottom="12dp"
                             android:hint="@string/B45" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
 
             </LinearLayout>
 
