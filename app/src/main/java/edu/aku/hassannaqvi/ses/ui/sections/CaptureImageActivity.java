@@ -26,6 +26,7 @@ public class CaptureImageActivity extends AppCompatActivity {
     Intent oF = null;
     String skip_flag;
     private int PhotoSerial;
+    private int PhotoCount;
     private List<String> somelist;
     private DatabaseHelper db;
     private String semisCode;
@@ -37,6 +38,7 @@ public class CaptureImageActivity extends AppCompatActivity {
         bi.setCallback(this);
         setupSkip();
         PhotoSerial = 0;
+        PhotoCount = 1;
 
         /*Intent intent = getIntent();
         skip_flag = intent.getStringExtra("skip_flag");
@@ -126,8 +128,9 @@ public class CaptureImageActivity extends AppCompatActivity {
         if (resultCode == 1) {
             Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
             String fileName = data.getStringExtra("FileName");
-            bi.fileName.setText(bi.fileName.getText() + String.valueOf(PhotoSerial) + " - " + fileName + ";\r\n");
+            bi.fileName.setText(bi.fileName.getText() + String.valueOf(PhotoCount) + " - " + fileName + ";\r\n");
             PhotoSerial++;
+            PhotoCount++;
         } else {
             Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
         }
