@@ -52,7 +52,7 @@ public class SectionD2Activity extends AppCompatActivity {
         if (skip) {
             BtnContinue();
             finish();
-            startActivity(new Intent(this, SectionEActivity.class));
+            startActivity(new Intent(this, SectionEActivity.class).putExtra("semisCode", semisCode));
         }
     }
 

@@ -107,7 +107,7 @@ public class CaptureImageActivity extends AppCompatActivity {
         } else {
 
             Intent intent = new Intent(this, TakePhoto.class);
-            intent.putExtra("picID", semisCode + PhotoSerial);
+            intent.putExtra("picID", semisCode + PhotoCount);
             intent.putExtra("childName", "");
             intent.putExtra("picView", "School".toUpperCase());
             if (id == 1) {

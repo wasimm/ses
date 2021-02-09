@@ -301,7 +301,7 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
 
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_mm_dd_hh_mm_ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy_M_dd_hh_mm_ss");
         String date = dateFormat.format(new Date());
 
         //TODO: PhotoID will be sent from calling Activity as StringExtra(). Replace "Cipture"
