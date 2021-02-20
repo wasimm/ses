@@ -23,6 +23,7 @@ import edu.aku.hassannaqvi.ses.contracts.FormsContract;
 import edu.aku.hassannaqvi.ses.core.DatabaseHelper;
 import edu.aku.hassannaqvi.ses.core.MainApp;
 import edu.aku.hassannaqvi.ses.databinding.ActivitySectionFBinding;
+import edu.aku.hassannaqvi.ses.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.ses.ui.other.MainActivity;
 
 
@@ -114,7 +115,7 @@ public class SectionFActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
+        oF = new Intent(this, EndingActivity.class);
         startActivity(oF);
     }
 
@@ -210,7 +211,7 @@ public class SectionFActivity extends AppCompatActivity {
         json.put("F896", bi.F896.isChecked() ? "96" : "-1");
         json.put("F896x", bi.F896x.getText().toString().trim().isEmpty() ? "-1" : bi.F896x.getText().toString().trim());
 
-        MainApp.setGPS(this, SectionFActivity);
+//        MainApp.setGPS(this, SectionFActivity);
 
         MainApp.form.setSection_F(String.valueOf(json));
     }

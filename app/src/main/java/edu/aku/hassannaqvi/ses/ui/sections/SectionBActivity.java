@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.ses.core.DatabaseHelper;
 import edu.aku.hassannaqvi.ses.core.MainApp;
 import edu.aku.hassannaqvi.ses.databinding.ActivitySectionBBinding;
 import edu.aku.hassannaqvi.ses.models.Form;
+import edu.aku.hassannaqvi.ses.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.ses.ui.other.MainActivity;
 
 import static edu.aku.hassannaqvi.ses.core.MainApp.form;
@@ -311,7 +312,7 @@ public class SectionBActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
+        oF = new Intent(this, EndingActivity.class);
         startActivity(oF);
     }
 
@@ -517,7 +518,7 @@ public class SectionBActivity extends AppCompatActivity {
         /*json.put("B44", bi.B44.getText().toString().trim().isEmpty() ? "-1" : bi.B44.getText().toString().trim());
         json.put("B45", bi.B45.getText().toString().trim().isEmpty() ? "-1" : bi.B45.getText().toString().trim());*/
 
-        MainApp.setGPS(this, SectionBActivity);
+//        MainApp.setGPS(this, SectionBActivity);
         MainApp.form.setSection_B(String.valueOf(json));
     }
 
