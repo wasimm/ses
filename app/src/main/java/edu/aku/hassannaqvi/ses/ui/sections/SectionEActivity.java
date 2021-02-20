@@ -436,7 +436,7 @@ public class SectionEActivity extends AppCompatActivity {
                 : bi.E3398.isChecked() ? "98"
                 : "-1");
 
-        MainApp.setGPS(this, SectionEActivity);
+//        MainApp.setGPS(this, SectionEActivity);
 
         MainApp.form.setSection_E(String.valueOf(json));
     }

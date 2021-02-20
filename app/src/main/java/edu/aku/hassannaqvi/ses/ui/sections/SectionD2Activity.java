@@ -292,7 +292,7 @@ public class SectionD2Activity extends AppCompatActivity {
                 : bi.D3998.isChecked() ? "98"
                 : "-1");
 
-        MainApp.setGPS(this, SectionD2Activity);
+//        MainApp.setGPS(this, SectionD2Activity);
 
         try {
             JSONObject json_merge = JSONUtils.mergeJSONObjects(new JSONObject(MainApp.form.getSection_D()), json);

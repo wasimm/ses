@@ -483,7 +483,7 @@ public class SectionBActivity extends AppCompatActivity {
         /*json.put("B44", bi.B44.getText().toString().trim().isEmpty() ? "-1" : bi.B44.getText().toString().trim());
         json.put("B45", bi.B45.getText().toString().trim().isEmpty() ? "-1" : bi.B45.getText().toString().trim());*/
 
-        MainApp.setGPS(this, SectionBActivity);
+//        MainApp.setGPS(this, SectionBActivity);
         MainApp.form.setSection_B(String.valueOf(json));
     }
 

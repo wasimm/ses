@@ -312,7 +312,7 @@ public class SectionD1Activity extends AppCompatActivity {
                 : bi.D2198.isChecked() ? "98"
                 : "-1");
 
-        MainApp.setGPS(this, SectionD1Activity);
+//        MainApp.setGPS(this, SectionD1Activity);
 
         MainApp.form.setSection_D(String.valueOf(json));
     }

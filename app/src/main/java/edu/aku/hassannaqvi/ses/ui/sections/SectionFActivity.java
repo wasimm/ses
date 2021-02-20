@@ -210,7 +210,7 @@ public class SectionFActivity extends AppCompatActivity {
         json.put("F896", bi.F896.isChecked() ? "96" : "-1");
         json.put("F896x", bi.F896x.getText().toString().trim().isEmpty() ? "-1" : bi.F896x.getText().toString().trim());
 
-        MainApp.setGPS(this, SectionFActivity);
+//        MainApp.setGPS(this, SectionFActivity);
 
         MainApp.form.setSection_F(String.valueOf(json));
     }

@@ -95,7 +95,7 @@ public class MainApp extends Application {
         MainApp.itemClick = itemClick;
     }
 
-    public static void setGPS(Activity activity, String form) {
+    /*public static void setGPS(Activity activity, String form) {
         SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
 
 
@@ -126,7 +126,7 @@ public class MainApp extends Application {
         }
 
 
-    }
+    }*/
 
     public static String getTagName(Context mContext) {
         SharedPreferences sharedPref = mContext.getSharedPreferences("tagName", MODE_PRIVATE);

@@ -204,7 +204,7 @@ public class SectionCActivity extends AppCompatActivity {
                 : bi.C1198.isChecked() ? "98"
                 : "-1");
 
-        MainApp.setGPS(this, SectionCActivity);
+//        MainApp.setGPS(this, SectionCActivity);
         MainApp.form.setSection_C(String.valueOf(json));
     }
 
