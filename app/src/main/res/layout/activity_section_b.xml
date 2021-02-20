@@ -103,6 +103,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        android:inputType="number"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <!--<Spinner
@@ -2592,11 +2593,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/submitBtns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="24dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <Button
                     android:id="@+id/btn_End"

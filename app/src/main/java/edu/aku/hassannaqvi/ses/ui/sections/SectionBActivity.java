@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -79,6 +81,37 @@ public class SectionBActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {}
         };
         bi.B4.addTextChangedListener(textWatcher);*/
+
+
+        bi.B1.setEnabled(false);
+        bi.B3.setEnabled(false);
+
+        TextWatcher textwatcher2 = new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.length() > 0 && s.length() < 9) {
+                    bi.B1.setText(null);
+                    bi.B2.setText(null);
+                    bi.B3.setText(null);
+                    bi.submitBtns.setVisibility(View.GONE);
+                    //Toast.makeText(getApplicationContext(), "either 0 or greater than 9 length", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "length is 0", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        };
+
+        bi.B4.addTextChangedListener(textwatcher2);
     }
 
     private void populateSpinner(final Context context) {
@@ -118,6 +151,7 @@ public class SectionBActivity extends AppCompatActivity {
                     school.moveToFirst();
                     bi.B1.setText(school.getString(school.getColumnIndex("districtName")));
                     bi.B3.setText(school.getString(school.getColumnIndex("sName")));
+                    bi.submitBtns.setVisibility(View.VISIBLE);
                 }
             }
         });
