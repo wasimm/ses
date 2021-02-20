@@ -23,6 +23,7 @@ import edu.aku.hassannaqvi.ses.contracts.FormsContract;
 import edu.aku.hassannaqvi.ses.core.DatabaseHelper;
 import edu.aku.hassannaqvi.ses.core.MainApp;
 import edu.aku.hassannaqvi.ses.databinding.ActivitySectionD2Binding;
+import edu.aku.hassannaqvi.ses.ui.other.EndingActivity;
 import edu.aku.hassannaqvi.ses.ui.other.MainActivity;
 import edu.aku.hassannaqvi.ses.utils.JSONUtils;
 
@@ -127,7 +128,7 @@ public class SectionD2Activity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
+        oF = new Intent(this, EndingActivity.class);
         startActivity(oF);
     }
 

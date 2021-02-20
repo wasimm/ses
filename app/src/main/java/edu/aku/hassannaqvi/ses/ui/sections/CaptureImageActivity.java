@@ -75,7 +75,7 @@ public class CaptureImageActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        oF = new Intent(this, MainActivity.class);
+        oF = new Intent(this, EndingActivity.class);
         startActivity(oF);
     }
 
